@@ -130,7 +130,12 @@ export default class LoginEventHandler extends WhatsAppBase { // FIXME: I have n
     const batchSize = 100
     await batchProcess(batchSize, contactOrRoomList, async (contactOrRoom: WhatsAppContact) => {
       const contactOrRoomId = contactOrRoom.id._serialized
-      const avatar = await contactOrRoom.getProfilePicUrl()
+      let avatar;
+      try {
+        avatar = await contactOrRoom.getProfilePicUrl()
+      } catch (e) {
+        console.log('getProfilePicUrl error')
+      }
       const contactWithAvatar = Object.assign(contactOrRoom, { avatar })
       if (isContactId(contactOrRoomId)) {
         contactCount++

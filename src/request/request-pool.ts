@@ -24,7 +24,7 @@ export class RequestPool {
       }
     }).catch(() => {
       delete this.poolMap[id]
-      throw WAError(WA_ERROR_TYPE.ERR_REQUEST_TIMEOUT, `TIMEOUT when processing request :${id}`)
+      // throw WAError(WA_ERROR_TYPE.ERR_REQUEST_TIMEOUT, `TIMEOUT when processing request :${id}`)
     })
     return callback
   }
