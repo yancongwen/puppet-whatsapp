@@ -18,6 +18,7 @@ import type {
   WhatsAppContact,
   BatteryInfo,
   WAStateType,
+  WhatsAppContactPayload,
 } from '../../schema/whatsapp-type.js'
 import {
   batchProcess,
@@ -58,7 +59,7 @@ export default class LoginEventHandler extends WhatsAppBase { // FIXME: I have n
     if (!this.qrcodeOrLoginCheckTimer) {
       return
     }
-    clearInterval(this.qrcodeOrLoginCheckTimer)
+    clearInterval(this.qrcodeOrLoginCheckTimer as any)
   }
 
   public async onAuthenticated () {
@@ -142,12 +143,12 @@ export default class LoginEventHandler extends WhatsAppBase { // FIXME: I have n
         if (contactOrRoom.isMyContact) {
           friendCount++
         }
-        await cacheManager.setContactOrRoomRawPayload(contactOrRoomId, contactWithAvatar)
+        await cacheManager.setContactOrRoomRawPayload(contactOrRoomId, contactWithAvatar as WhatsAppContactPayload)
       } else if (isRoomId(contactOrRoomId)) {
         const memberList = await this.manager.syncRoomMemberList(contactOrRoomId)
         if (memberList.length > 0) {
           roomCount++
-          await cacheManager.setContactOrRoomRawPayload(contactOrRoomId, contactWithAvatar)
+          await cacheManager.setContactOrRoomRawPayload(contactOrRoomId, contactWithAvatar as WhatsAppContactPayload)
         } else {
           await cacheManager.deleteContactOrRoom(contactOrRoomId)
           await cacheManager.deleteRoomMemberIdList(contactOrRoomId)

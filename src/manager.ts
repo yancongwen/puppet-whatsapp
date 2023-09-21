@@ -260,7 +260,7 @@ export default class Manager extends EE<ManagerEvents> {
 
   private stopHeartbeat () {
     if (this.heartbeatTimer) {
-      clearInterval(this.heartbeatTimer)
+      clearInterval(this.heartbeatTimer as any)
       this.heartbeatTimer = undefined
     }
   }

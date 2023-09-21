@@ -32,7 +32,7 @@ test('message parser for room message which send from bot by web ', async t => {
     isEphemeral: false,
     links: [],
   }
-  const messagePayload = parserMessageRawPayload(roomMessageFromBotByWeb)
+  const messagePayload = parserMessageRawPayload(roomMessageFromBotByWeb as any)
   t.ok(messagePayload.listenerId === undefined, 'should get no target id')
   t.ok(messagePayload.roomId === '120363039010379837@g.us', 'should get correct room id')
   t.ok(messagePayload.talkerId === '8613812345679@c.us', 'shuold get correct sender id')
@@ -74,7 +74,7 @@ test('message parser for room message which send from bot by api ', async t => {
     isEphemeral: false,
     links: [],
   }
-  const messagePayload = parserMessageRawPayload(roomMessageFromBotByApi)
+  const messagePayload = parserMessageRawPayload(roomMessageFromBotByApi as any)
 
   t.ok(messagePayload.listenerId === undefined, 'should get no target id')
   t.ok(messagePayload.roomId === '120363039010379837@g.us', 'should get correct room id')
@@ -115,7 +115,7 @@ test('message parser for room message which send from other contact ', async t =
     isEphemeral: false,
     links: [],
   }
-  const messagePayload = parserMessageRawPayload(roomMessageFromOtherContact)
+  const messagePayload = parserMessageRawPayload(roomMessageFromOtherContact as any)
 
   t.ok(messagePayload.listenerId === undefined, 'should get no target id')
   t.ok(messagePayload.roomId === '120363039010379837@g.us', 'should get correct room id')
@@ -154,7 +154,7 @@ test('message parser for contact message which send from bot by web ', async t =
     isEphemeral: false,
     links: [],
   }
-  const messagePayload = parserMessageRawPayload(contactMessageFromBotByWeb)
+  const messagePayload = parserMessageRawPayload(contactMessageFromBotByWeb as any)
 
   t.ok(messagePayload.listenerId === '8618710175700@c.us', 'should get correct target id')
   t.ok(messagePayload.roomId === undefined, 'should get no room id')
@@ -193,7 +193,7 @@ test('message parser for contact message which send from bot by api ', async t =
     isEphemeral: false,
     links: [],
   }
-  const messagePayload = parserMessageRawPayload(contactMessageFromBotByApi)
+  const messagePayload = parserMessageRawPayload(contactMessageFromBotByApi as any)
 
   t.ok(messagePayload.listenerId === '8613811286503@c.us', 'should get correct target id')
   t.ok(messagePayload.roomId === undefined, 'should get no room id')
@@ -232,7 +232,7 @@ test('message parser for contact message which send from other contact', async t
     isEphemeral: false,
     links: [],
   }
-  const messagePayload = parserMessageRawPayload(contactMessageFromOtherContact)
+  const messagePayload = parserMessageRawPayload(contactMessageFromOtherContact as any)
 
   t.ok(messagePayload.listenerId === '8613812345679@c.us', 'should get correct target id')
   t.ok(messagePayload.roomId === undefined, 'should get no room id')

@@ -2,6 +2,7 @@
   "extends": "@chatie/tsconfig",
   "compilerOptions": {
     "outDir": "dist/esm",
+    "ignoreDeprecations": "5.0"
   },
   "exclude": [
     "node_modules/",

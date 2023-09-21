@@ -1,5 +1,5 @@
-import { WA_ERROR_TYPE } from '../exception/error-type.js'
-import WAError from '../exception/whatsapp-error.js'
+// import { WA_ERROR_TYPE } from '../exception/error-type.js'
+// import WAError from '../exception/whatsapp-error.js'
 export class RequestPool {
 
   private static _instance?: RequestPool
